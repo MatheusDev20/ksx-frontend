@@ -1,6 +1,7 @@
 import Image from "next/image";
 import logo from './assets/logo1.png'
 import { Navigation } from "./components/Navigation";
+import { ThemeSwitch } from "./components/ThemeSwitch";
 
 export default function Page() {
     return (
@@ -11,9 +12,7 @@ export default function Page() {
             </header>
             <Navigation />
         </div>
-        {/* Theme Switch */}
-
-        <div className='mb-12'>Switch de thema</div>
+        <ThemeSwitch />
 
        </aside>
     )
