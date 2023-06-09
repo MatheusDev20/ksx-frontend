@@ -1,6 +1,6 @@
-export default function DashboardLayout({children}: { children: React.ReactNode }){
+export default function DashboardLayout({children}: { children: React.ReactNode }) {
     return (
-    <main className='w-full h-100 flex'>
+    <main className='w-full md:h-screen sm:h-100 flex'>
         {children}
     </main>
     )

@@ -1,5 +1,4 @@
 import { ReactNode } from "react"
-import { IconType } from "react-icons";
 
 type Props = {
     icon: ReactNode

@@ -15,7 +15,7 @@ export const Form = (): JSX.Element => {
                 <div className='flex flex-col gap-2'>
                     <label className='text-sm text-zinc-500 tracking-tighter'>Username or email</label>
                     <input
-                        {...register('username' ,{ required: true })} 
+                        {...register('username' ,{ required: true })}
                         className="w-72 p-2 text-primary border border-solid rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"  />
                 </div>
                 <div
