@@ -21,18 +21,18 @@ export const Sidebar = (): JSX.Element => {
             </header>
 
             {expand && (
-                    <button className='absolute top-10 z-10' style={{left: '230px'}}>
-                    <div onClick={() => toggle(false)} className='bg-white border hover:bg-gray-200 border-solid rounded-full flex items-center'>
-                        <IoIosArrowBack className='w-6 h-6 text-blue-700'/>
-                    </div>
-                </button>
+                    <button className='absolute top-10 z-10 hidden lg:flex 2xl:left-60 lg:left-56'>
+                        <div onClick={() => toggle(false)} className='bg-white border hover:bg-gray-200 border-solid rounded-full flex items-center'>
+                            <IoIosArrowBack className='w-6 h-6 text-blue-700'/>
+                        </div>
+                    </button>
             )}
             {!expand && (
-                    <button className='absolute top-10 z-10' style={{left: '75px'}}>
-                    <div onClick={() => toggle(true)} className='bg-white border hover:bg-gray-200 border-solid rounded-full flex items-center'>
-                        <GrFormNext className='w-6 h-6 text-blue-700'/>
-                    </div>
-                </button>
+                    <button className='absolute top-10 z-10 ' style={{ left: '75px' }}>
+                        <div onClick={() => toggle(true)} className='bg-white border hover:bg-gray-200 border-solid rounded-full flex items-center'>
+                            <GrFormNext className='w-6 h-6 text-blue-700'/>
+                        </div>
+                    </button>
             )}
             <Navigation isExpanded={expand} />
         </div>
