@@ -1,3 +1,4 @@
+import { Sidebar } from './components/Sidebar'
 import './global.css'
 
 export const metadata = {
@@ -16,7 +17,9 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        </body>
     </html>
   )
 }

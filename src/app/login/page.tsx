@@ -1,7 +1,7 @@
 
 import Image from 'next/image'
-import sideImage from './assets/login_side.jpg'
-import logo from './assets/logo1.png';
+import sideImage from '../assets/imgs/login_side.jpg'
+import logo from '../assets/imgs/logo1.png'
 import { Form } from './components/Form';
 
 export default function Page() {

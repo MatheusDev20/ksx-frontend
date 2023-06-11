@@ -1,13 +1,14 @@
 'use client'
 
 import Image from "next/image"
-import sun from '../../assets/sun.png'
-import moon from '../../assets/moon.png'
+import sun from '../../assets/imgs/sun.png'
+import moon from '../../assets/imgs/moon.png'
 import { useState } from "react"
 
 interface Props {
     isExpanded: boolean;
 }
+
 export const ThemeSwitch = ({ isExpanded }: Props): JSX.Element => {
     const [mode, setMode] = useState('light');
     const set = (theme: string) => {
