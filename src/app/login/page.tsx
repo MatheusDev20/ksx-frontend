@@ -10,7 +10,7 @@ export default function Page() {
             <aside className='md:w-1/2 sm:w-full sm:h-full flex items-center py-12'>
                 <main className='flex flex-col p-12 mb-4 w-full'>
                     <div className='flex w-full items-center justify-center'>
-                        <Image src={logo} alt='KSX' className='place-self-center ml-28'/>
+                        <Image src={logo} alt='KSX' className='place-self-center mb-12'/>
                     </div>
                     {/* Welcome Messages */}
                     <div className='flex flex-col'>

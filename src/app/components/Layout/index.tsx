@@ -5,10 +5,10 @@ export const BaseLayout = ({ children }: { children: React.ReactNode }): JSX.Ele
    return ( 
     <main className='w-full md:h-screen sm:h-100 flex'>
         <Sidebar />
-            <div className='w-full'>
-                <Header />
-                {children}
-            </div>
-        </main>
+        <div className='w-full'>
+             <Header />
+            {children}
+        </div>
+    </main>
    )
 }
