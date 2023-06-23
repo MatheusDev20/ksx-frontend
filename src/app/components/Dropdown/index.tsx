@@ -6,8 +6,8 @@ import { BsThreeDotsVertical } from 'react-icons/bs'
 export function MyDropdown() {
   return (
     <Menu>
-      <Menu.Button className='w-4 h-4'>
-        <BsThreeDotsVertical color='black' />
+      <Menu.Button className="w-4 h-4">
+        <BsThreeDotsVertical color="black" />
       </Menu.Button>
       <Menu.Items>
         <Menu.Item>
