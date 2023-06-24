@@ -12,7 +12,7 @@ export const Header = (): React.JSX.Element => {
       {/* Search Input */}
       <div className="flex rounded-xl bg-slate-100 place-self-center ml-12 w-1/4">
         <div className="flex w-[15%] items-center justify-center">
-          <AiOutlineSearch size={18} className="place-self-center" />
+          <AiOutlineSearch size={24} className="place-self-center" />
         </div>
         <input
           type="text"

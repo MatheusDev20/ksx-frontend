@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { IoIosArrowBack } from 'react-icons/io'
 import { GrFormNext } from 'react-icons/gr'
@@ -7,16 +7,19 @@ import logo from '../../assets/imgs/logo1.png'
 import { Navigation } from '../Navigation'
 import { ThemeSwitch } from '../ThemeSwitch'
 
-export const Sidebar = (): React.JSX.Element => {
-  const [expand, setExpand] = useState(true)
+type Props = {
+  expand: boolean
+  setExpand: (b: boolean) => void
+}
 
+export const Sidebar = ({ expand, setExpand }: Props): React.JSX.Element => {
   const toggle = (b: boolean) => setExpand(b)
 
   return (
     <aside
       className={`flex ${
-        expand ? 'w-[285px]' : 'w-[95px]'
-      } h-screen border border-solid border-gray-200 flex-col bg-gray-50 gap-2 justify-between`}
+        expand ? 'w-[250px]' : 'w-[95px]'
+      } border border-solid border-gray-200 flex-col bg-gray-50 gap-2 h-screen justify-between fixed`}
     >
       <div className="relative">
         <header className="flex items-center justify-center py-3">
@@ -24,7 +27,7 @@ export const Sidebar = (): React.JSX.Element => {
         </header>
 
         {expand && (
-          <button className="absolute top-10 z-10 hidden lg:flex 2xl:left-60 lg:left-56">
+          <button className="absolute top-10 z-10 hidden lg:flex 2xl:left-60 lg:left-60">
             <div
               onClick={() => toggle(false)}
               className="bg-white border hover:bg-gray-200 border-solid rounded-full flex items-center"
