@@ -1,12 +1,20 @@
+'use client'
+
 import Image from 'next/image'
 import Employee from '../../assets/imgs/happy-employee1.jpg'
 import { InfoLabel } from '../components/InfoLabel'
+import { TabContent, TabsNavigation } from '../components/Tabs'
+import { useState } from 'react'
 
 export default function Page() {
+  const [activeTab, setActiveTab] = useState(0)
+
+  const handleTab = (activeTab: number) => setActiveTab(activeTab)
+
   return (
     <div className="flex flex-col md:flex-row sm:h-full gap-10 p-3 max-w-full">
       {/* Basic Info + Avatar */}
-      <aside className="md:w-1/5 p-6 flex gap-6 flex-col shadow-xl ml-8 border items-center border-solid">
+      <aside className="p-6 flex gap-6 flex-col shadow-xl ml-8 items-center max-w-sm">
         {/* Avatar + Name */}
         <div className="flex flex-col gap-2 items-center">
           <Image
@@ -33,7 +41,16 @@ export default function Page() {
 
       {/* Personal Information + Payment information */}
 
-      <div className="md:flex-1 shadow-lg">Other infos</div>
+      <div className="md:flex-1 shadow-lg flex flex-col">
+        {/* Tabs */}
+        <TabsNavigation handleTab={handleTab} activeTab={activeTab} />
+        <TabContent idx={0} title="Basic Info Profile" activeTab={activeTab}>
+          Basic Info Profile
+        </TabContent>
+        <TabContent idx={1} title="Payment Information" activeTab={activeTab}>
+          Payment Information
+        </TabContent>
+      </div>
     </div>
   )
 }
