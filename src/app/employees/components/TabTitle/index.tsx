@@ -7,8 +7,8 @@ type TabTitleProps = {
 
 export const TabTitle = ({ title }: TabTitleProps): React.JSX.Element => {
   return (
-    <header className="flex justify-between p-8">
-      <span className="text-2xl text-slate-800">{title}</span>
+    <header className="flex justify-between">
+      <span className="text-2xl font-semibold">{title}</span>
       <div>
         <Image className="w-6 cursor-pointer" src={EditIcon} alt="edit" />
       </div>

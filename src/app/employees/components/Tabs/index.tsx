@@ -65,7 +65,7 @@ export const TabContent = ({
     <div
       className={`${
         activeTab === idx ? 'block' : 'hidden'
-      } px-4 py-2 bg-white shadow-lg p-8 rounded-lg mt-8`}
+      } p-8 bg-white shadow-lg rounded-lg mt-8 flex flex-col gap-6`}
     >
       {children}
     </div>

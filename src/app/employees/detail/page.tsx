@@ -6,6 +6,7 @@ import { InfoLabel } from '../components/InfoLabel'
 import { TabContent, TabsNavigation } from '../components/Tabs'
 import { useState } from 'react'
 import { TabTitle } from '../components/TabTitle'
+import { BasicInfoProfile } from '../components/Tabs/BasicProfile'
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0)
@@ -33,12 +34,12 @@ export default function Page() {
 
         {/* Other Infos */}
         <div className="flex flex-col gap-5 w-full">
-          <InfoLabel title="Journey" info="5x8" />
-          <InfoLabel title="Admission Date" info="10/05/2023" />
-          <InfoLabel title="Registration" info="05323" />
-          <InfoLabel title="Manager" info="Diego Moraes" />
-          <InfoLabel title="Position" info="FrontEnd Engineer" />
-          <InfoLabel title="Department" info="IT" />
+          <InfoLabel title="Journey" info="5x8" w="100%" />
+          <InfoLabel title="Admission Date" info="10/05/2023" w="100%" />
+          <InfoLabel title="Registration" info="05323" w="100%" />
+          <InfoLabel title="Manager" info="Diego Moraes" w="100%" />
+          <InfoLabel title="Position" info="FrontEnd Engineer" w="100%" />
+          <InfoLabel title="Department" info="IT" w="100%" />
         </div>
       </aside>
 
@@ -49,6 +50,7 @@ export default function Page() {
         <TabsNavigation handleTab={handleTab} activeTab={activeTab} />
         <TabContent idx={0} title="Basic Info Profile" activeTab={activeTab}>
           <TabTitle title="Personal Data" />
+          <BasicInfoProfile />
         </TabContent>
         <TabContent idx={1} title="Payment Information" activeTab={activeTab}>
           Aqui vai o básico de pagamento
