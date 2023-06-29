@@ -8,9 +8,9 @@ import { AiOutlineSearch } from 'react-icons/ai'
 
 export const Header = (): React.JSX.Element => {
   return (
-    <header className="flex-1 flex justify-between border-b-[1.5px] border-solid border-gray-200 p-4 h-20">
+    <header className="flex-1 flex border-gray-200 justify-between border-b-[1.5px] border-solid p-4 h-20">
       {/* Search Input */}
-      <div className="flex rounded-xl bg-slate-100 place-self-center ml-12 w-1/4">
+      <div className="flex rounded-xl bg-slate-100 place-self-center md:w-1/4 md:ml-12 ml-28">
         <div className="flex w-[15%] items-center justify-center">
           <AiOutlineSearch size={24} className="place-self-center" />
         </div>
@@ -22,7 +22,7 @@ export const Header = (): React.JSX.Element => {
       </div>
       {/* Logged user Avatar */}
       <div className="flex gap-12">
-        <div className="flex gap-6 items-center">
+        <div className="gap-6 items-center hidden md:flex">
           {/* Icons */}
           <IoIosNotificationsOutline
             size={24}

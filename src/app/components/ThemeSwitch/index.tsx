@@ -5,21 +5,13 @@ import Image from 'next/image'
 import sun from '../../assets/imgs/sun.png'
 import moon from '../../assets/imgs/moon.png'
 
-interface Props {
-  isExpanded: boolean
-}
-
-export const ThemeSwitch = ({ isExpanded }: Props): React.JSX.Element => {
+export const ThemeSwitch = (): React.JSX.Element => {
   const [mode, setMode] = useState('light')
   const set = (theme: string) => {
     setMode(theme)
   }
   return (
-    <div
-      className={`${
-        !isExpanded ? 'hidden' : ''
-      } flex sm:none place-self-center w-3/4 h-12 border border-solid border-red mb-12 rounded-xl bg-gray-200 p-1`}
-    >
+    <div className="hidden md:flex place-self-center w-3/4 h-12 border border-solid border-red mb-12 rounded-xl bg-gray-200 p-1">
       <div
         onClick={() => set('light')}
         className={`flex gap-2 cursor-pointer justify-center items-center rounded-xl ${

@@ -5,10 +5,7 @@ import { BsPersonCircle } from 'react-icons/bs'
 import { FiSettings } from 'react-icons/fi'
 import { NavItem } from '../NavItem'
 
-interface Props {
-  isExpanded: boolean
-}
-export const Navigation = ({ isExpanded }: Props): React.JSX.Element => {
+export const Navigation = (): React.JSX.Element => {
   return (
     <nav className="flex flex-col gap-4">
       <div>
@@ -17,18 +14,10 @@ export const Navigation = ({ isExpanded }: Props): React.JSX.Element => {
         </span>
         {/* Nav Item */}
         <div className="flex flex-col mt-3 gap-5">
-          <NavItem icon={<AiOutlineHome />} text="Home" expand={isExpanded} />
-          <NavItem
-            icon={<BsPersonCircle />}
-            text="Employees"
-            expand={isExpanded}
-          />
-          <NavItem icon={<BiTask />} text="Tasks" expand={isExpanded} />
-          <NavItem
-            icon={<AiTwotoneCalendar />}
-            text="Calendar"
-            expand={isExpanded}
-          />
+          <NavItem icon={<AiOutlineHome />} text="Home" />
+          <NavItem icon={<BsPersonCircle />} text="Employees" />
+          <NavItem icon={<BiTask />} text="Tasks" />
+          <NavItem icon={<AiTwotoneCalendar />} text="Calendar" />
         </div>
       </div>
 
@@ -37,7 +26,7 @@ export const Navigation = ({ isExpanded }: Props): React.JSX.Element => {
           Support
         </span>
         <div className="flex flex-col mt-3 gap-5">
-          <NavItem icon={<FiSettings />} text="Settings" expand={isExpanded} />
+          <NavItem icon={<FiSettings />} text="Settings" />
         </div>
       </div>
     </nav>
