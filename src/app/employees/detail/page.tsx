@@ -1,10 +1,11 @@
 'use client'
 
 import Image from 'next/image'
-import Employee from '../../assets/imgs/happy-employee1.jpg'
+import Employee from '../../assets/imgs/fake-avatar1.jpg'
 import { InfoLabel } from '../components/InfoLabel'
 import { TabContent, TabsNavigation } from '../components/Tabs'
 import { useState } from 'react'
+import { TabTitle } from '../components/TabTitle'
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0)
@@ -22,7 +23,9 @@ export default function Page() {
             alt="employee_picture"
             className="w-48 h-48 rounded-md"
           />
-          <span className="text-md font-black leading-6">Brief Shortcase</span>
+          <span className="text-md font-black leading-6">
+            Nathalia de Paula
+          </span>
           <span className="text-xs font-semibold inline-block py-1 px-2 rounded text-blue-800 bg-blue-200 uppercase last:mr-0 mr-1">
             Employee
           </span>
@@ -41,14 +44,14 @@ export default function Page() {
 
       {/* Personal Information + Payment information */}
 
-      <div className="md:flex-1 shadow-lg flex flex-col">
+      <div className="md:flex-1 flex flex-col">
         {/* Tabs */}
         <TabsNavigation handleTab={handleTab} activeTab={activeTab} />
         <TabContent idx={0} title="Basic Info Profile" activeTab={activeTab}>
-          Basic Info Profile
+          <TabTitle title="Personal Data" />
         </TabContent>
         <TabContent idx={1} title="Payment Information" activeTab={activeTab}>
-          Payment Information
+          Aqui vai o básico de pagamento
         </TabContent>
       </div>
     </div>

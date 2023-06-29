@@ -10,9 +10,9 @@ export const Header = (): React.JSX.Element => {
   return (
     <header className="flex-1 flex border-gray-200 justify-between border-b-[1.5px] border-solid p-4 h-20">
       {/* Search Input */}
-      <div className="flex rounded-xl bg-slate-100 place-self-center md:w-1/4 md:ml-12 ml-28">
-        <div className="flex w-[15%] items-center justify-center">
-          <AiOutlineSearch size={24} className="place-self-center" />
+      <div className="flex rounded-xl bg-slate-100 place-self-center md:w-1/4 md:ml-12 ml-28 mr-4 md:mr-0">
+        <div className="flex md:w-[15%] p-3 items-center justify-center">
+          <AiOutlineSearch size={16} className="place-self-center" />
         </div>
         <input
           type="text"
@@ -21,7 +21,7 @@ export const Header = (): React.JSX.Element => {
         />
       </div>
       {/* Logged user Avatar */}
-      <div className="flex gap-12">
+      <div className="flex gap-12 justify-self-end md:justify-normal">
         <div className="gap-6 items-center hidden md:flex">
           {/* Icons */}
           <IoIosNotificationsOutline
@@ -36,7 +36,7 @@ export const Header = (): React.JSX.Element => {
             className="w-8 h-8 md:w-10 md:h-10 rounded-full cursor-pointer"
             alt="me"
           />
-
+          {/* Profile Avatar and Role */}
           <div className="flex-col justify-center hidden md:flex">
             <span className="text-sm text-blue-800 font-bold">
               Matheus de Paula
@@ -46,7 +46,7 @@ export const Header = (): React.JSX.Element => {
             </span>
           </div>
 
-          <div className="place-self-center">
+          <div className="place-self-center mr-11">
             <MyDropdown />
           </div>
         </div>

@@ -1,9 +1,24 @@
+/* eslint-disable camelcase */
 import './global.css'
 import React from 'react'
+
+import { Roboto_Mono } from 'next/font/google'
 export const metadata = {
   title: 'Stx System',
   description: 'Intern system to manage employee and tasks',
 }
+
+// const inter = Inter({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-inter',
+// })
+
+const roboto_mono = Roboto_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto-mono',
+})
 
 export default function RootLayout({
   children,
@@ -11,12 +26,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="icon" href="./app/assets/imgs/logo1.png" sizes="any" />
-      </head>
+    <html lang="en" className={roboto_mono.variable}>
+      <link rel="icon" href="./app/assets/imgs/logo1.png" sizes="any" />
       <body>{children}</body>
     </html>
   )
