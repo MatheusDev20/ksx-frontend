@@ -8,7 +8,7 @@ import { ThemeSwitch } from '../ThemeSwitch'
 export const Sidebar = (): React.JSX.Element => {
   return (
     <aside
-      className={`flex md:w-[280px] w-[80px] border border-solid border-gray-200 flex-col bg-gray-50 gap-2 h-screen justify-between fixed`}
+      className={`flex md:w-[230px] w-[80px] border border-solid border-gray-200 flex-col gap-2 h-screen justify-between fixed`}
     >
       <div className="relative">
         <header className="flex items-center justify-center py-3">

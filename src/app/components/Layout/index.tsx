@@ -9,14 +9,12 @@ export const BaseLayout = ({
   children: React.ReactNode
 }): React.JSX.Element => {
   return (
-    <main className="w-full sm:h-100 flex">
+    <div className="flex">
       <Sidebar />
-      <div
-        className={`w-full flex flex-col ml-[50px] md:ml-[280px] overflow-auto`}
-      >
+      <div className={`w-full flex flex-col ml-[50px] md:ml-[230px] h-screen`}>
         <Header />
-        {children}
+        <main className="flex-1 bg-gray-50">{children}</main>
       </div>
-    </main>
+    </div>
   )
 }

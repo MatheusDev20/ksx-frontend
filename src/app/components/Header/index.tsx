@@ -8,7 +8,7 @@ import { AiOutlineSearch } from 'react-icons/ai'
 
 export const Header = (): React.JSX.Element => {
   return (
-    <header className="flex-1 flex border-gray-200 justify-between border-b-[1.5px] border-solid p-4 h-20">
+    <header className="flex border-gray-200 justify-between border-b-[1.5px] border-solid p-4">
       {/* Search Input */}
       <div className="flex rounded-xl bg-slate-100 place-self-center md:w-1/4 md:ml-12 ml-28 mr-4 md:mr-0">
         <div className="flex md:w-[15%] p-3 items-center justify-center">

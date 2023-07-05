@@ -2,11 +2,11 @@
 
 import Image from 'next/image'
 import Employee from '../../assets/imgs/fake-avatar1.jpg'
-import { InfoLabel } from '../components/InfoLabel'
-import { TabContent, TabsNavigation } from '../components/Tabs'
+import { InfoLabel } from './components/InfoLabel'
+import { TabContent, TabsNavigation } from './components/Tabs'
 import { useState } from 'react'
-import { TabTitle } from '../components/TabTitle'
-import { BasicInfoProfile } from '../components/Tabs/BasicProfile'
+import { TabTitle } from './components/TabTitle'
+import { BasicInfoProfile } from './components/Tabs/BasicProfile'
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0)
