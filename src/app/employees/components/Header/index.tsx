@@ -1,23 +1,23 @@
 import React from 'react'
-import { BiFilterAlt } from 'react-icons/bi'
+import { AddEmployeeButton, FilterButton } from '../Buttons/buttons'
 
 export const Header = (): React.JSX.Element => {
   return (
     <header className="flex justify-between w-full p-8">
       {/* Filter and Total of employees */}
-      <div className="flex gap-20">
+      <div className="flex gap-20 p-2">
         <span className="text-2xl text-blue-800">42 Employees</span>
-
-        <button className="bg-blue-600 text-white px-4 py-2 rounded hover:border-transparent hover:bg-blue-500">
-          <div className="flex gap-2 items-center">
-            <BiFilterAlt size={20} />
-            <span className="text-sm tracking-wide">Filter</span>
-          </div>
-        </button>
+        <FilterButton />
       </div>
 
       {/* Rest of infos and actions that i dont know Yet */}
-      <div>Actions</div>
+      <div className="flex gap-20 mr-12 p-2 items-center">
+        <div className="flex gap-4">
+          <span className="font-semibold text-blue-800 text-lg">5</span>
+          <p className="font-semibold text-lg">Selected</p>
+        </div>
+        <AddEmployeeButton />
+      </div>
     </header>
   )
 }
