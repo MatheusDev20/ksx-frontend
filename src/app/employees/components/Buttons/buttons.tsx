@@ -20,7 +20,7 @@ export const AddEmployeeButton = (): React.JSX.Element => {
         text-blue-800 border border-solid
           border-blue-800 px-4 py-2 rounded 
           hover:border-transparent hover:text-white hover:bg-blue-600 
-          transition duration-300 ease-in-out w-28 md:w-[70%] items-center flex justify-center mr-12 md:mr-0"
+          transition duration-300 ease-in-out w-28 md:w-[100%] items-center flex justify-center mr-12 md:mr-0"
     >
       <div className="flex gap-2 items-center">
         <BsPersonPlusFill className="hidden md:flex" size={20} />
