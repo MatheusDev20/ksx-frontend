@@ -48,7 +48,10 @@ export const CardList = (): React.JSX.Element => {
         </EmployeeCard.Wrapper>
       </div>
       <footer className="px-8 place-self-center w-full">
-        <Pagination page={1} />
+        <Pagination.Wrapper>
+          <Pagination.Limit />
+          <Pagination.List />
+        </Pagination.Wrapper>
       </footer>
     </main>
   )

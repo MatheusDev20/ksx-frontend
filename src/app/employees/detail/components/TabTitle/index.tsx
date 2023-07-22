@@ -1,6 +1,7 @@
 import React from 'react'
 import EditIcon from '../../../../assets/svgs/edit.svg'
 import Image from 'next/image'
+
 type TabTitleProps = {
   title: string
 }

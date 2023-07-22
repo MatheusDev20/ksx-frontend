@@ -1,8 +1,9 @@
+import React from 'react'
+
 import Image from 'next/image'
 import sideImage from '../assets/imgs/login_side.jpg'
 import logo from '../assets/imgs/logo1.png'
 import { Form } from './components/Form'
-import React from 'react'
 
 export default function Page(): React.JSX.Element {
   return (
