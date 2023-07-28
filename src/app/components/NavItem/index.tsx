@@ -6,7 +6,7 @@ type Props = {
 
 export const NavItem = ({ icon, text }: Props): React.JSX.Element => {
   return (
-    <div className="group flex items-center place-self-center gap-4 px-6 cursor-pointer w-5/6 hover:bg-gray-200 h-8 rounded-xl">
+    <div className="group flex items-center place-self-center gap-4 px-6 cursor-pointer w-5/6 hover:bg-gray-200 h-8 rounded-xl md:ml-5 ml-0">
       <span className="place-self-center md:text-sm text-gray-500 group-hover:text-blue-800 group-hover:font-semibold ">
         {icon}
       </span>

@@ -1,7 +1,11 @@
 import React from 'react'
 import { AddEmployeeButton, FilterButton } from '../Buttons/buttons'
 
-export const Header = (): React.JSX.Element => {
+type Props = {
+  employeesSelected: number
+}
+
+export const Header = ({ employeesSelected }: Props): React.JSX.Element => {
   return (
     <header className="flex md:justify-between items-center flex-col gap-6 md:flex-row w-full p-8">
       {/* Filter and Total of employees */}
@@ -18,7 +22,7 @@ export const Header = (): React.JSX.Element => {
       <div className="flex gap-20 md:mr-12 mr-0 p-2 items-center justify-between w-full md:w-1/2">
         <div className="flex gap-4 md:ml-0">
           <span className="text-sm  font-semibold text-blue-800 md:text-lg">
-            5
+            {employeesSelected}
           </span>
           <p className="font-semibold text-sm md:text-lg">Selected</p>
         </div>

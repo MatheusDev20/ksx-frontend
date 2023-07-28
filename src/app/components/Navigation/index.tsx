@@ -5,6 +5,7 @@ import { BiTask } from 'react-icons/bi'
 import { BsPersonVcard } from 'react-icons/bs'
 import { FiSettings } from 'react-icons/fi'
 import { NavItem } from '../NavItem'
+import Link from 'next/link'
 
 export const Navigation = (): React.JSX.Element => {
   return (
@@ -15,10 +16,18 @@ export const Navigation = (): React.JSX.Element => {
         </span>
         {/* Nav Item */}
         <div className="flex flex-col mt-3 gap-5">
-          <NavItem icon={<AiOutlineHome />} text="Home" />
-          <NavItem icon={<BsPersonVcard />} text="Employees" />
-          <NavItem icon={<BiTask />} text="Tasks" />
-          <NavItem icon={<FcDepartment />} text="Departments" />
+          <Link href="/home">
+            <NavItem icon={<AiOutlineHome />} text="Home" />
+          </Link>
+          <Link href="/employees">
+            <NavItem icon={<BsPersonVcard />} text="Employees" />
+          </Link>
+          <Link href="/employees/task">
+            <NavItem icon={<BiTask />} text="Tasks" />
+          </Link>
+          <Link href="/departments">
+            <NavItem icon={<FcDepartment />} text="Departments" />
+          </Link>
         </div>
       </div>
 

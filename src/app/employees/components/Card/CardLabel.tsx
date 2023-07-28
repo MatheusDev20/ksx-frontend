@@ -20,7 +20,7 @@ export const CardLabel = ({ status }: CardLabelProps): React.JSX.Element => {
           [classes.wrapperActive]: status === 'Active',
           [classes.wrapperInactive]: status === 'Not Active',
         },
-        'border border-solid px-2 rounded-lg',
+        'border border-solid p-1 rounded-lg flex items-center',
       )}
     >
       <span

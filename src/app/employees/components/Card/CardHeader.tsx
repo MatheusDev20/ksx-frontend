@@ -1,18 +1,30 @@
-import React from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { BsThreeDots } from 'react-icons/bs'
 import { CardLabel } from './CardLabel'
 
 type CardLabelProps = {
   employeeStatus: 'Not Active' | 'Active'
+  setSelecteds: (value: number) => void
 }
 
 export const CardHeader = ({
   employeeStatus,
+  setSelecteds,
 }: CardLabelProps): React.JSX.Element => {
+  const [isSelected, setIsSelected] = useState<boolean>(false)
+
+  const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!isSelected) {
+      setIsSelected(true)
+      return
+    }
+    setIsSelected(false)
+  }
   return (
     <header className="flex justify-between items-center">
       <input
         type="checkbox"
+        onChange={(e) => handleCheck(e)}
         className="cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
       />
       <div className="flex gap-4 items-center">

@@ -21,7 +21,7 @@ export default function Page(): React.JSX.Element {
                 <span className="tracking-wider text-blue-400">KSX</span>
               </h1>
               <p className="text-gray-500 tracking-tighter text-lg">
-                Welcome back, please enter your details
+                Welcome back, please enter your credentials
               </p>
             </div>
             <Form />
