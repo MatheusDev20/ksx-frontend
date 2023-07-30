@@ -31,36 +31,39 @@ export const Stepper = (): React.JSX.Element => {
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1)
   }
+
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full gap-6 p-3">
       {/* Stepper  */}
       <MuiStepper activeStep={activeStep}>
         {steps.map((label, index) => {
           return (
-            <Step key={label}>
+            <Step key={`label-${index}`}>
               <StepLabel>{label}</StepLabel>
             </Step>
           )
         })}
       </MuiStepper>
-      <div>{getCurrentStep(activeStep)}</div>
+      <StepLayout>{getCurrentStep(activeStep)}</StepLayout>
       {/* Reach the final step */}
       {activeStep === steps.length ? (
         <div>
           <FinalStep />
         </div>
       ) : (
-        <div className="border border-solid border-red-700 items-center justify-center flex p-3">
+        <div className="items-center justify-center flex">
           <div className="flex w-1/4 justify-between p-2">
-            <Button
-              variant="contained"
-              className="text-white font-semibold bg-blue-500"
-              sx={{ color: 'red', mr: 1 }}
-              disabled={activeStep === 0}
-              onClick={handleBack}
-            >
-              Back
-            </Button>
+            {activeStep !== 0 && (
+              <Button
+                variant="contained"
+                className="text-white font-semibold bg-blue-500"
+                sx={{ color: 'red', mr: 1 }}
+                disabled={activeStep === 0}
+                onClick={handleBack}
+              >
+                Back
+              </Button>
+            )}
             <Button
               onClick={handleNext}
               className="text-white font-semibold bg-blue-500"
@@ -73,4 +76,13 @@ export const Stepper = (): React.JSX.Element => {
       )}
     </div>
   )
+}
+
+type StepLayoutProps = {
+  children: React.ReactNode
+}
+export const StepLayout = ({
+  children,
+}: StepLayoutProps): React.JSX.Element => {
+  return <div className="flex p-3">{children}</div>
 }
