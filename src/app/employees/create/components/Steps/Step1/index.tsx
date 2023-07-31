@@ -1,19 +1,44 @@
+'use client'
+
 import { CustomInput } from '@/app/components/Input'
 import React from 'react'
-// Name, Email, Password, BirthDate, Address
+import {
+  PersonIcon,
+  CalendarIcon,
+  EmailIcon,
+  AddressIcon,
+  PhoneIcon,
+} from '../../../../../assets/icons'
+import { useCreateEmployeeForm } from '@/app/contexts/create-employee-form'
+
 export const StepOne = (): React.JSX.Element => {
+  const { formData, setFormData } = useCreateEmployeeForm()
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      stepOne: { ...formData.stepOne, [e.target.name]: e.target.value },
+    })
+  }
+
   return (
     <div className="flex flex-col gap-5 w-full items-start ml-10">
       {/* Name and Last Name */}
       <div className="flex gap-3 w-full p-1.5">
         <CustomInput
+          onChange={(e) => handleInput(e)}
           wSize="medium"
+          name="name"
+          icon={<PersonIcon />}
           label="First Name"
           placeholder="Katarine Devito..."
           type="text"
         />
         <CustomInput
+          onChange={(e) => handleInput(e)}
+          name="lastName"
           wSize="medium"
+          icon={<PersonIcon />}
           placeholder="Last Name..."
           label="Last Name"
         />
@@ -21,26 +46,38 @@ export const StepOne = (): React.JSX.Element => {
       {/* Date of Birth and Email Address */}
       <div className="flex gap-3 w-full p-1.5">
         <CustomInput
+          name="birthDate"
+          onChange={(e) => handleInput(e)}
           wSize="medium"
           label="Birth Date"
+          icon={<CalendarIcon />}
           mask="99/99/9999"
           placeholder="09/09/1999..."
         />
         <CustomInput
+          name="email"
+          onChange={(e) => handleInput(e)}
           wSize="medium"
           label="Email"
+          icon={<EmailIcon />}
           placeholder="katarine@stx.com..."
         />
       </div>
       {/* Address  and Phone */}
       <div className="flex p-1.5 w-full gap-3">
         <CustomInput
+          name="phone"
+          onChange={(e) => handleInput(e)}
           wSize="medium"
+          icon={<PhoneIcon />}
           label="Address"
           placeholder="134 Trainer Avenue Bloomington IL Illinois 61701"
         />
         <CustomInput
+          name="address"
+          onChange={(e) => handleInput(e)}
           wSize="medium"
+          icon={<AddressIcon />}
           label="Phone"
           mask="(99)-99999-9999"
           placeholder="(32) 999850138 ..."
