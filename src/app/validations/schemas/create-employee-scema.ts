@@ -10,3 +10,13 @@ export const stepOneSchema = object({
   address: string().required('Address is required'),
   phone: string().required('Phone is required'),
 })
+
+export const stepTwoSchema = object({
+  department: string().required('Department is required'),
+  position: string().required('Position is required'),
+  password: string()
+    .required()
+    .min(8, 'Password must be at least 8 characters'),
+
+  hireDate: string().required('Hire date is required'),
+})

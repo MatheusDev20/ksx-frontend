@@ -9,8 +9,14 @@ import {
   StepTwo,
   steps,
 } from '../Steps'
-import { useCreateEmployeeForm } from '@/app/contexts/create-employee-form'
-import { stepOneSchema } from '@/app/validations/schemas/create-employee-scema'
+import {
+  StepValues,
+  useCreateEmployeeForm,
+} from '@/app/contexts/create-employee-form'
+import {
+  stepOneSchema,
+  stepTwoSchema,
+} from '@/app/validations/schemas/create-employee-scema'
 import { ObjectSchema } from 'yup'
 import { CreateEmployeeForm } from '@/@types/employees'
 import { ValidationResult } from '@/@types/yup'
@@ -90,7 +96,7 @@ export const Stepper = (): React.JSX.Element => {
     </div>
   )
 }
-
+/* Step Layout */
 type StepLayoutProps = {
   children: React.ReactNode
 }
@@ -110,6 +116,10 @@ const validateCurrentStep = async (
       validation = await validateStep(formData.stepOne, stepOneSchema)
       break
 
+    case 1:
+      validation = await validateStep(formData.stepTwo, stepTwoSchema)
+      break
+
     default:
       return { veredict: false, errors: null }
   }
@@ -118,7 +128,7 @@ const validateCurrentStep = async (
 }
 
 const validateStep = async (
-  stepData: any,
+  stepData: StepValues,
   schema: ObjectSchema<any>,
 ): Promise<ValidationResult> => {
   try {

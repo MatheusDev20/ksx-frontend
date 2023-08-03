@@ -6,6 +6,7 @@ interface CustomInputProps extends InputHTMLAttributes<HTMLSelectElement> {
   wSize: 'small' | 'medium' | 'large'
   icon: ReactNode
   label: String
+  placeholder: string
   error: string[] | null
 }
 
@@ -20,6 +21,7 @@ export const CustomSelect = ({
   icon,
   label,
   error,
+  placeholder,
   ...rest
 }: CustomInputProps): React.JSX.Element => {
   return (
@@ -44,6 +46,7 @@ export const CustomSelect = ({
           </div>
         </div>
         <select
+          defaultValue=""
           {...rest}
           className={clsx(
             { 'border-red-600': error },
@@ -51,6 +54,7 @@ export const CustomSelect = ({
           )}
         >
           {/* TODO: Turn this dyamic */}
+          <option value="">{placeholder}</option>
           <option value="Tech Department">Tech Department</option>
           <option value="People and Culture">People and culture</option>
           <option value="Operations">Operations</option>

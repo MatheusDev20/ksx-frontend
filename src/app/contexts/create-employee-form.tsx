@@ -12,6 +12,9 @@ type ContextProps = {
   setFormData: React.Dispatch<React.SetStateAction<ContextData>>
 }
 
+type StepKeys = keyof ContextData
+export type StepValues = ContextData[StepKeys]
+
 export const CreateEmployeeForm = createContext<ContextProps | null>(null)
 
 type Props = {
@@ -27,7 +30,11 @@ const CreateEmployeeFormProvider: React.FC<Props> = ({ children }: Props) => {
       lastName: '',
       phone: '',
     },
-    stepTwo: {},
+    stepTwo: {
+      department: '',
+      hireDate: new Date().toLocaleDateString('pt-BR'),
+      position: '',
+    },
   } as ContextData)
 
   // Use to memoized the object to avoid unecessary re-renders

@@ -1,9 +1,8 @@
-import { PersonIcon } from '@/app/assets/icons'
+import { PersonIcon, LockIcon, DepartmentIcon } from '@/app/assets/icons'
 import { CustomInput } from '@/app/components/Input'
 import { CustomSelect } from '@/app/components/Select'
 import { useCreateEmployeeForm } from '@/app/contexts/create-employee-form'
 import React from 'react'
-import { BsBuildingAdd } from 'react-icons/bs'
 
 type Props = {
   errors: { [key: string]: string[] } | null
@@ -31,19 +30,18 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
           wSize="medium"
           name="department"
           error={errors ? errors.department : null}
-          icon={<BsBuildingAdd />}
+          icon={<DepartmentIcon />}
           label="Departamento"
-          placeholder="Employee Password ..."
-          type="text"
+          placeholder="Select an Department..."
         />
         <CustomInput
           onChange={(e) => handleInput(e)}
           name="password"
           type="password"
-          error={errors ? errors.lastName : null}
+          error={errors ? errors.password : null}
           wSize="medium"
-          icon={<PersonIcon />}
-          placeholder="Employee Stx password access..."
+          icon={<LockIcon />}
+          placeholder="@stx password access..."
           label="Password Acesss"
         />
       </div>
@@ -52,20 +50,22 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
         <CustomSelect
           onChange={(e) => handleSelect(e)}
           name="position"
-          error={errors ? errors.lastName : null}
+          error={errors ? errors.position : null}
           wSize="medium"
           icon={<PersonIcon />}
-          placeholder="Position..."
+          placeholder="Select the employee position"
           label="Position"
         />
         <CustomInput
           onChange={(e) => handleInput(e)}
-          name="position"
-          error={errors ? errors.lastName : null}
+          name="hireDate"
+          value={formData.stepTwo.hireDate}
+          mask="99/99/9999"
+          error={errors ? errors.hireDate : null}
           wSize="medium"
           icon={<PersonIcon />}
-          placeholder="Position..."
-          label="Position"
+          placeholder="01/12/2023..."
+          label="Hire Date"
         />
       </div>
     </div>
