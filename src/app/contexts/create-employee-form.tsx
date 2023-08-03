@@ -1,16 +1,12 @@
 'use client'
+import { StepOneData, StepTwoData } from '@/@types/employees'
 import React, { createContext, useContext, useMemo, useState } from 'react'
-export type StepOneData = {
-  name: string
-  lastName: string
-  birthDate: string
-  email: string
-  address: string
-  phone: string
-}
+
 type ContextData = {
   stepOne: StepOneData
+  stepTwo: StepTwoData
 }
+
 type ContextProps = {
   formData: ContextData
   setFormData: React.Dispatch<React.SetStateAction<ContextData>>
@@ -22,7 +18,17 @@ type Props = {
   children: React.ReactNode
 }
 const CreateEmployeeFormProvider: React.FC<Props> = ({ children }: Props) => {
-  const [formData, setFormData] = useState<ContextData>({} as ContextData)
+  const [formData, setFormData] = useState<ContextData>({
+    stepOne: {
+      name: '',
+      birthDate: '',
+      address: '',
+      email: '',
+      lastName: '',
+      phone: '',
+    },
+    stepTwo: {},
+  } as ContextData)
 
   // Use to memoized the object to avoid unecessary re-renders
   const contextValue = useMemo(

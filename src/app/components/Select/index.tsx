@@ -1,13 +1,11 @@
 import clsx from 'clsx'
 import React, { InputHTMLAttributes, ReactNode } from 'react'
 import { CiCircleAlert } from 'react-icons/ci'
-import InputMask from 'react-input-mask'
 
-interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface CustomInputProps extends InputHTMLAttributes<HTMLSelectElement> {
   wSize: 'small' | 'medium' | 'large'
   icon: ReactNode
   label: String
-  mask?: string | Array<string | RegExp>
   error: string[] | null
 }
 
@@ -17,10 +15,9 @@ const classes = {
   smallInput: 'w-1/4',
 }
 
-export const CustomInput = ({
+export const CustomSelect = ({
   wSize,
   icon,
-  mask,
   label,
   error,
   ...rest
@@ -39,33 +36,25 @@ export const CustomInput = ({
       <label className="font-semibold text-sm p-2.5 text-gray-600">
         {label}
       </label>
-      <div className="flex w-ful relative">
+      <div className="flex w-full relative">
         {/* Icon */}
         <div className="absolute flex border border-transparent left-0 top-0 h-full w-10">
           <div className="flex items-center justify-center rounded-tl rounded-bl z-10 bg-gray-100 text-gray-600 text-lg h-full w-full">
             {icon}
           </div>
         </div>
-        {mask ? (
-          <div className="flex flex-col gap-2 w-full">
-            <InputMask
-              mask={mask}
-              {...rest}
-              className={clsx(
-                { 'border-red-600': error },
-                'text-sm sm:text-base relative w-full border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-12',
-              )}
-            />
-          </div>
-        ) : (
-          <input
-            {...rest}
-            className={clsx(
-              { 'border-red-600': error },
-              'text-sm sm:text-base relative w-full border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-12',
-            )}
-          />
-        )}
+        <select
+          {...rest}
+          className={clsx(
+            { 'border-red-600': error },
+            'text-sm sm:text-base relative w-full border rounded bg-white placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2.5 pr-2 pl-12',
+          )}
+        >
+          {/* TODO: Turn this dyamic */}
+          <option value="Tech Department">Tech Department</option>
+          <option value="People and Culture">People and culture</option>
+          <option value="Operations">Operations</option>
+        </select>
       </div>
       {error && (
         <div className="flex gap-4 items-center">
