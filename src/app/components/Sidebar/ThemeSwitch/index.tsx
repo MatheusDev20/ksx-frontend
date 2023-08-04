@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import sun from '../../assets/imgs/sun.png'
-import moon from '../../assets/imgs/moon.png'
+import sun from '../../../assets/imgs/sun.png'
+import moon from '../../../assets/imgs/moon.png'
 
 export const ThemeSwitch = (): React.JSX.Element => {
   const [mode, setMode] = useState('light')

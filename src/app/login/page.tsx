@@ -7,7 +7,7 @@ import { Form } from './components/Form'
 
 export default function Page(): React.JSX.Element {
   return (
-    <main className="flex flex-col md:flex-row sm:h-full">
+    <main className="flex flex-col md:flex-row sm:h-full pt-6">
       <aside className="md:w-1/2 sm:w-full sm:h-full flex items-center py-12">
         <main className="flex flex-col p-12 mb-4 w-full">
           <div className="flex w-full items-center justify-center">

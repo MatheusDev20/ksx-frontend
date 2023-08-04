@@ -1,53 +1,86 @@
 /* eslint-disable no-unused-vars */
 'use client'
 
-import React from 'react'
-import { useForm } from 'react-hook-form'
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { SignInButton } from '../Buttons/sign-in-button'
 import { LoginFormData } from '@/@types'
+import { CustomInput } from '@/app/components/Inputs'
+import { LockIcon, PersonIcon } from '@/app/assets/icons'
+import { loginFormSchema } from '@/app/validations/schemas/login-form-schema'
+import { ValidationResult } from '@/@types/yup'
+import { ObjectSchema } from 'yup'
 
 export const Form = (): React.JSX.Element => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormData>()
-  const onSubmit = (data: LoginFormData) => console.log('Send to server', data)
+  const [loginForm, setLogin] = useState<LoginFormData>({
+    password: '',
+    username: '',
+  })
+  const [errors, setErrors] = useState<{ [key: string]: string[] } | null>(null)
 
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const { veredict, errors } = await validateForm(loginForm, loginFormSchema)
+    if (!veredict) {
+      setErrors(errors)
+    }
+  }
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setLogin({ ...loginForm, [e.target.name]: e.target.value })
+  }
   return (
     <>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={(e) => handleSubmit(e)}
         className="flex flex-col gap-5 items-center p-8 justify-items-center"
       >
         <div className="flex flex-col w-full items-center p-4">
-          <div className="flex flex-col gap-2">
-            <label className="text-sm text-zinc-500 tracking-tighter">
-              Username or email
-            </label>
-            <input
-              {...register('username', { required: true })}
-              className="w-72 p-2 text-primary border border-solid rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-sm text-zinc-500 tracking-tighter">
-              Your password
-            </label>
-            <input
-              {...register('password', { required: true })}
-              name="password"
-              type="password"
-              className="w-72 p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
-            />
-            <a className="text-sm mb-10 cursor-pointer no-underline font-medium text-blue-800 hover:text-blue-400 dark:text-primary-500">
-              Forgot password?
-            </a>
-          </div>
+          <CustomInput
+            name="username"
+            onChange={(e) => handleInput(e)}
+            error={errors ? errors.username : null}
+            wSize="medium"
+            icon={<PersonIcon />}
+            label="Username"
+            placeholder="Username or STX email..."
+          />
 
-          <SignInButton>Log in</SignInButton>
+          <CustomInput
+            name="password"
+            type="password"
+            onChange={(e) => handleInput(e)}
+            error={errors ? errors.username : null}
+            wSize="medium"
+            icon={<LockIcon />}
+            label="Password"
+            placeholder="Password..."
+          />
+          <a className="text-sm mb-10 mt-5 cursor-pointer no-underline font-medium text-blue-800 hover:text-blue-400 dark:text-primary-500">
+            Forgot password?
+          </a>
+          <SignInButton>Login</SignInButton>
         </div>
       </form>
     </>
   )
+}
+
+const validateForm = async (
+  formData: LoginFormData,
+  schema: ObjectSchema<any>,
+): Promise<ValidationResult> => {
+  try {
+    await schema.validate(formData, { abortEarly: false })
+    return { veredict: true, errors: null }
+  } catch (err: any) {
+    const { inner } = err
+    const errorMap: { [key: string]: string[] } = {}
+    inner.forEach((error: any) => {
+      const { path, errors } = error
+      errorMap[path] = errors
+    })
+    return {
+      veredict: false,
+      errors: errorMap,
+    }
+  }
 }
