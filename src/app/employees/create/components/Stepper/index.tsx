@@ -10,22 +10,23 @@ import {
   steps,
 } from '../Steps'
 import {
+  ContextData,
   StepValues,
   useCreateEmployeeForm,
 } from '@/app/contexts/create-employee-form'
 import {
   stepOneSchema,
   stepTwoSchema,
+  validateFile,
 } from '@/app/validations/schemas/create-employee-scema'
 import { ObjectSchema } from 'yup'
-import { CreateEmployeeForm } from '@/@types/employees'
 import { ValidationResult } from '@/@types/yup'
 
 export const Stepper = (): React.JSX.Element => {
   const { formData } = useCreateEmployeeForm()
   const [activeStep, setActiveStep] = React.useState(2)
   const [errors, setErrors] = useState<{ [key: string]: string[] } | null>(null)
-
+  console.log(errors)
   const getCurrentStep = (currStep: number) => {
     switch (currStep) {
       case 0:
@@ -35,7 +36,7 @@ export const Stepper = (): React.JSX.Element => {
         return <StepTwo errors={errors} />
 
       case 2:
-        return <StepThree />
+        return <StepThree errors={errors} />
     }
   }
 
@@ -107,7 +108,7 @@ export const StepLayout = ({
 }
 
 const validateCurrentStep = async (
-  formData: CreateEmployeeForm,
+  formData: ContextData,
   currStep: number,
 ): Promise<ValidationResult> => {
   let validation: ValidationResult = { veredict: true, errors: null }
@@ -118,6 +119,11 @@ const validateCurrentStep = async (
 
     case 1:
       validation = await validateStep(formData.stepTwo, stepTwoSchema)
+      break
+
+    case 2:
+      validation = validateFile(formData.stepThree.avatar)
+
       break
 
     default:

@@ -13,6 +13,10 @@ export type StepTwoData = {
   hireDate: string
 }
 
+export type StepThreeData = {
+  avatar: File | null
+}
+
 export type CreateEmployeeForm = {
   stepOne: StepOneData
   stepTwo: StepTwoData

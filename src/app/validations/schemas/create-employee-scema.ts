@@ -1,3 +1,4 @@
+import { ValidationResult } from '@/@types/yup'
 import { object, string } from 'yup'
 
 export const stepOneSchema = object({
@@ -20,3 +21,34 @@ export const stepTwoSchema = object({
 
   hireDate: string().required('Hire date is required'),
 })
+
+const validFileExtensions = {
+  image: ['jpg', 'png'],
+}
+export function validateFile(file: File | null): ValidationResult {
+  if (!file) {
+    return {
+      errors: {
+        avatar: ['Avatar is required'],
+      },
+      veredict: false,
+    }
+  }
+  const fileExt = file.name.split('.')[1]
+  const fileType = file.type.split('/')[0] as keyof typeof validFileExtensions
+  console.log(validFileExtensions.image.join(','))
+  if (!validFileExtensions[fileType].includes(fileExt)) {
+    return {
+      errors: {
+        avatar: [
+          `File extension not supported - Supported Extensions ( ${validFileExtensions.image.join(
+            ',',
+          )} )`,
+        ],
+      },
+      veredict: false,
+    }
+  }
+
+  return { errors: null, veredict: false }
+}

@@ -1,10 +1,11 @@
 'use client'
-import { StepOneData, StepTwoData } from '@/@types/employees'
+import { StepOneData, StepThreeData, StepTwoData } from '@/@types/employees'
 import React, { createContext, useContext, useMemo, useState } from 'react'
 
-type ContextData = {
+export type ContextData = {
   stepOne: StepOneData
   stepTwo: StepTwoData
+  stepThree: StepThreeData
 }
 
 type ContextProps = {
@@ -34,6 +35,9 @@ const CreateEmployeeFormProvider: React.FC<Props> = ({ children }: Props) => {
       department: '',
       hireDate: new Date().toLocaleDateString('pt-BR'),
       position: '',
+    },
+    stepThree: {
+      avatar: null,
     },
   } as ContextData)
 
