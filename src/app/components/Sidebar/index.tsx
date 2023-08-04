@@ -2,8 +2,8 @@
 import React from 'react'
 import Image from 'next/image'
 import logo from '../../assets/imgs/logo1.png'
-import { Navigation } from '../Navigation'
-import { ThemeSwitch } from '../ThemeSwitch'
+import { Navigation } from './Navigation'
+import { ThemeSwitch } from './ThemeSwitch'
 
 export const Sidebar = (): React.JSX.Element => {
   return (

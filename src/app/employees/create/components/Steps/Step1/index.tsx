@@ -1,6 +1,6 @@
 'use client'
 
-import { CustomInput } from '@/app/components/Input'
+import { CustomInput } from '@/app/components/Inputs'
 import React from 'react'
 import {
   PersonIcon,

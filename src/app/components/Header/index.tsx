@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import avatar from '../../assets/imgs/fake-avatar.jpg'
-import { MyDropdown } from '../Dropdown'
+import { MyDropdown } from './Dropdown'
 import { IoIosNotificationsOutline } from 'react-icons/io'
 import { BsChatLeftText } from 'react-icons/bs'
 import { AiOutlineSearch } from 'react-icons/ai'

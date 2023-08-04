@@ -1,6 +1,6 @@
 import { PersonIcon, LockIcon, DepartmentIcon } from '@/app/assets/icons'
-import { CustomInput } from '@/app/components/Input'
-import { CustomSelect } from '@/app/components/Select'
+import { CustomInput } from '@/app/components/Inputs'
+import { CustomSelect } from '@/app/components/Inputs/Select'
 import { useCreateEmployeeForm } from '@/app/contexts/create-employee-form'
 import React from 'react'
 

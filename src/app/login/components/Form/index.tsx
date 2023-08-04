@@ -4,7 +4,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { SignInButton } from '../Buttons/sign-in-button'
 import { LoginFormData } from '@/@types'
-import { CustomInput } from '@/app/components/Input'
+import { CustomInput } from '@/app/components/Inputs'
 import { LockIcon, PersonIcon } from '@/app/assets/icons'
 import { loginFormSchema } from '@/app/validations/schemas/login-form-schema'
 import { ValidationResult } from '@/@types/yup'
