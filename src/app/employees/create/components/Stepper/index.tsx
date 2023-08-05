@@ -16,7 +16,7 @@ export const Stepper = (): React.JSX.Element => {
   const { formData } = useCreateEmployeeForm()
   const [activeStep, setActiveStep] = React.useState(0)
   const [errors, setErrors] = useState<{ [key: string]: string[] } | null>(null)
-  console.log(errors)
+
   const getCurrentStep = (currStep: number) => {
     switch (currStep) {
       case 0:
@@ -54,13 +54,10 @@ export const Stepper = (): React.JSX.Element => {
           )
         })}
       </MuiStepper>
-
-      <StepLayout>{getCurrentStep(activeStep)}</StepLayout>
+      <div className="flex p-3">{getCurrentStep(activeStep)}</div>
       {/* Reach the final step */}
       {activeStep === steps.length ? (
-        <div>
-          <FinalStep />
-        </div>
+        <FinalStep />
       ) : (
         <div className="items-center justify-center flex">
           <div className="flex w-1/4 justify-between p-2">
@@ -86,13 +83,4 @@ export const Stepper = (): React.JSX.Element => {
       )}
     </div>
   )
-}
-/* Step Layout */
-type StepLayoutProps = {
-  children: React.ReactNode
-}
-export const StepLayout = ({
-  children,
-}: StepLayoutProps): React.JSX.Element => {
-  return <div className="flex p-3">{children}</div>
 }
