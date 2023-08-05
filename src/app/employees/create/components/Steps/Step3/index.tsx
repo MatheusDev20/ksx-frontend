@@ -1,16 +1,33 @@
 import { UploadInput } from '@/app/components/Inputs'
 import React from 'react'
-import rAvatar from '../../../../../assets/imgs/fake-avatar.jpg'
+import genericAvatar from '../../../../../assets/imgs/generic-avatar.jpg'
 import Image from 'next/image'
+import { useCreateEmployeeForm } from '@/app/contexts/create-employee-form'
 
 type Props = {
   errors: { [key: string]: string[] } | null
 }
+
 export const StepThree = ({ errors }: Props): React.JSX.Element => {
+  const {
+    formData: { stepThree },
+  } = useCreateEmployeeForm()
   return (
     <div className="flex w-full p-12 gap-5 items-center">
-      <Image src={rAvatar} alt="preview" className="w-48 h-48 rounded-full" />
-      <UploadInput errors={errors?.avatar} />
+      {!stepThree.avatar || errors?.avatar ? (
+        <Image
+          src={genericAvatar}
+          alt="preview"
+          className="rounded-full h-36 w-36"
+        />
+      ) : (
+        <Image
+          src={URL.createObjectURL(stepThree.avatar)}
+          alt="preview"
+          className="rounded-full h-36 w-36"
+        />
+      )}
+      <UploadInput errors={errors ? errors.avatar : null} />
     </div>
   )
 }
