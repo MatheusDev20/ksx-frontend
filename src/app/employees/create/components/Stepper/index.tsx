@@ -14,7 +14,7 @@ import { validateCurrentStep } from '@/app/validations/schemas/'
 
 export const Stepper = (): React.JSX.Element => {
   const { formData } = useCreateEmployeeForm()
-  const [activeStep, setActiveStep] = React.useState(2)
+  const [activeStep, setActiveStep] = React.useState(0)
   const [errors, setErrors] = useState<{ [key: string]: string[] } | null>(null)
 
   const getCurrentStep = (currStep: number) => {

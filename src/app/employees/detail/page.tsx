@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import Employee from '../../assets/imgs/fake-avatar1.jpg'
+import Employee from '../../assets/imgs/fake-avatar1.png'
 import { InfoLabel } from './components/InfoLabel'
 import { TabContent, TabsNavigation } from './components/Tabs'
 import { useState } from 'react'

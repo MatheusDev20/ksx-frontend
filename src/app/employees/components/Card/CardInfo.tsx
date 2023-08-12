@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import fakeAvatar from '../../../assets/imgs/fake-avatar1.jpg'
+import fakeAvatar from '../../../assets/imgs/fake-avatar1.png'
 
 export const CardInfo = (): React.JSX.Element => {
   return (
@@ -12,7 +12,7 @@ export const CardInfo = (): React.JSX.Element => {
           className="self-center rounded-full w-20 h-20"
         />
         <div className="flex flex-col">
-          <span className="text-lg font-semibold">Nathalia de Paula</span>
+          <span className="text-lg font-semibold">Joãozinho da Silva</span>
           <span className="self-center text-sm text-gray-400 font-semibold">
             Frontend Engineer
           </span>

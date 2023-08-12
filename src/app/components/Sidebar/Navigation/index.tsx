@@ -16,13 +16,13 @@ export const Navigation = (): React.JSX.Element => {
         </span>
         {/* Nav Item */}
         <div className="flex flex-col mt-3 gap-5">
-          <Link href="/home">
+          <Link href="/employees">
             <NavItem icon={<AiOutlineHome />} text="Home" />
           </Link>
           <Link href="/employees">
             <NavItem icon={<BsPersonVcard />} text="Employees" />
           </Link>
-          <Link href="/employees/task">
+          <Link href="/employees">
             <NavItem icon={<BiTask />} text="Tasks" />
           </Link>
           <Link href="/departments">

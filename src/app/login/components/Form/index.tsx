@@ -6,9 +6,10 @@ import { SignInButton } from '../Buttons/sign-in-button'
 import { LoginFormData } from '@/@types'
 import { CustomInput } from '@/app/components/Inputs'
 import { LockIcon, PersonIcon } from '@/app/assets/icons'
-import { loginFormSchema } from '@/app/validations/schemas/login-form-schema'
+import { loginFormSchema } from '@/app/validations/schemas/login/login-form-schema'
 import { ValidationResult } from '@/@types/yup'
 import { ObjectSchema } from 'yup'
+import Link from 'next/link'
 
 export const Form = (): React.JSX.Element => {
   const [loginForm, setLogin] = useState<LoginFormData>({
@@ -30,7 +31,7 @@ export const Form = (): React.JSX.Element => {
   return (
     <>
       <form
-        onSubmit={(e) => handleSubmit(e)}
+        // onSubmit={(e) => handleSubmit(e)}
         className="flex flex-col gap-5 items-center p-8 justify-items-center"
       >
         <div className="flex flex-col w-full items-center p-4">
@@ -57,7 +58,10 @@ export const Form = (): React.JSX.Element => {
           <a className="text-sm mb-10 mt-5 cursor-pointer no-underline font-medium text-blue-800 hover:text-blue-400 dark:text-primary-500">
             Forgot password?
           </a>
-          <SignInButton>Login</SignInButton>
+          <Link href="/employees">
+            <SignInButton>Login</SignInButton>
+          </Link>
+          {/* <SignInButton>Login</SignInButton> */}
         </div>
       </form>
     </>
