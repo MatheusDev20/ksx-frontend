@@ -1,6 +1,11 @@
 import { object, string } from 'yup'
 
 export const loginFormSchema = object({
-  username: string().required('Username is required'),
-  password: string().required('Password is required'),
+  email: string()
+    .required('Email is required')
+    .email('Email is Invalid'),
+  password:
+    string()
+      .required('Password is required')
+      .min(8, 'Password must be at least 6 characters'),
 })
