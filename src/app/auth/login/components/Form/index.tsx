@@ -10,9 +10,10 @@ import { loginFormSchema } from '@/app/validations/schemas/login/login-form-sche
 import { ValidationResult } from '@/@types/yup'
 import { ObjectSchema } from 'yup'
 import { redirect } from 'next/navigation'
-import { timeout } from '@/utils'
-import { Alert } from "flowbite-react";
 import { Spinner } from '@material-tailwind/react'
+import { CiCircleAlert } from 'react-icons/ci'
+import { useSession, signIn, signOut } from "next-auth/react"
+import { sign } from 'crypto'
 
 
 export const Form = (): React.JSX.Element => {
@@ -22,39 +23,22 @@ export const Form = (): React.JSX.Element => {
     password: '',
     email: '',
   })
+  const [alert, setAlert] = useState('')
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setLoading(true)
-    await timeout(3000)
-
-
     const { veredict, errors } = await validateForm(loginForm, loginFormSchema)
     if (!veredict) {
       setErrors(errors)
       return
     }
-    try {
-      const res = await fetch('http://localhost:3000/api/login', { method: 'POST', body: JSON.stringify(loginForm) })
-      const data = await res.json()
+    const data = await signIn('credentials', {
+      email: loginForm.email,
+      password: loginForm.password,
+      redirect: false
+    })
+    console.log(data)
 
-      const { response: { statusCode, message } } = data
-
-      if (statusCode !== 200) {
-        setErrors({
-          email: [message], password: [message]
-        })
-        setLoading(false)
-        return
-      }
-
-      setLoading(false)
-      redirect('employees')
-
-    }
-    catch (err) {
-      console.error(err)
-    }
   }
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +57,7 @@ export const Form = (): React.JSX.Element => {
             error={errors ? errors.email : null}
             wSize="medium"
             icon={<PersonIcon />}
-            label="Username"
+            label="Email"
             placeholder="Username or STX email..."
           />
 
@@ -87,6 +71,12 @@ export const Form = (): React.JSX.Element => {
             label="Password"
             placeholder="Password..."
           />
+          {alert &&
+            <div className='flex gap-2'>
+              <CiCircleAlert className="text-red-500" />
+              {<span className="text-sm text-red-500 font-semibold">{alert}</span>}
+            </div>
+          }
           <a className="text-sm mb-10 mt-5 cursor-pointer no-underline font-medium text-blue-800 hover:text-blue-400 dark:text-primary-500">
             Forgot password?
           </a>

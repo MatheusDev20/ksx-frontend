@@ -3,6 +3,8 @@ import './global.css'
 import React from 'react'
 
 import { Roboto_Mono } from 'next/font/google'
+import { SessionProvider } from 'next-auth/react'
+import Providers from './providers'
 export const metadata = {
   title: 'Stx System',
   description: 'Intern system to manage employee and tasks',
@@ -28,7 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={roboto_mono.variable}>
       <link rel="icon" href="./app/assets/imgs/logo1.png" sizes="any" />
-      <body>{children}</body>
+      <body>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   )
 }

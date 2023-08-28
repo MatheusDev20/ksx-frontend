@@ -1,11 +1,11 @@
 import React from 'react'
 
 import Image from 'next/image'
-import sideImage from '../assets/imgs/login_side.jpg'
-import logo from '../assets/imgs/logo1.png'
+import sideImage from '../../assets/imgs/login_side.jpg'
+import logo from '../../assets/imgs/logo1.png'
 import { Form } from './components/Form'
 
-export default function Page(): React.JSX.Element {
+export default async function Page() {
   return (
     <main className="flex flex-col md:flex-row sm:h-full pt-6">
       <aside className="md:w-1/2 sm:w-full sm:h-full flex items-center py-12">
