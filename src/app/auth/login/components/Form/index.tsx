@@ -12,8 +12,6 @@ import { ObjectSchema } from 'yup'
 import { redirect } from 'next/navigation'
 import { Spinner } from '@material-tailwind/react'
 import { CiCircleAlert } from 'react-icons/ci'
-import { useSession, signIn, signOut } from "next-auth/react"
-import { sign } from 'crypto'
 
 
 export const Form = (): React.JSX.Element => {
@@ -32,13 +30,12 @@ export const Form = (): React.JSX.Element => {
       setErrors(errors)
       return
     }
-    const data = await signIn('credentials', {
-      email: loginForm.email,
-      password: loginForm.password,
-      redirect: false
+    const res = await fetch('http://localhost:3000/api/login', {
+      method: 'POST',
+      body: JSON.stringify(loginForm),
     })
-    console.log(data)
-
+    const loginResult = await res.json()
+    console.log(loginResult)
   }
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {

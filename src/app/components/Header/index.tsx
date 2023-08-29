@@ -7,6 +7,7 @@ import { BsChatLeftText } from 'react-icons/bs'
 import { AiOutlineSearch } from 'react-icons/ai'
 
 export const Header = (): React.JSX.Element => {
+  console.log(process.env.NEXTAUTH_SECRET)
   return (
     <header className="flex border-gray-200 justify-between border-b-[1.5px] border-solid p-4">
       {/* Search Input */}
