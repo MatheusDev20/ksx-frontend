@@ -4,6 +4,7 @@ import Image from 'next/image'
 import logo from '../../assets/imgs/logo1.png'
 import { Navigation } from './Navigation'
 import { ThemeSwitch } from './ThemeSwitch'
+import { useAuth } from '@/app/contexts/auth-context'
 
 export const Sidebar = (): React.JSX.Element => {
   return (

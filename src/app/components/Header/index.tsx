@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import avatar from '../../assets/imgs/fake-avatar.jpg'
@@ -6,8 +8,7 @@ import { IoIosNotificationsOutline } from 'react-icons/io'
 import { BsChatLeftText } from 'react-icons/bs'
 import { AiOutlineSearch } from 'react-icons/ai'
 
-export const Header = (): React.JSX.Element => {
-  console.log(process.env.NEXTAUTH_SECRET)
+export const Header = ({ user }: any): React.JSX.Element => {
   return (
     <header className="flex border-gray-200 justify-between border-b-[1.5px] border-solid p-4">
       {/* Search Input */}
@@ -40,10 +41,10 @@ export const Header = (): React.JSX.Element => {
           {/* Profile Avatar and Role */}
           <div className="flex-col justify-center hidden md:flex">
             <span className="text-sm text-blue-800 font-bold">
-              Matheus de Paula
+              {user.name}
             </span>
             <span className="text-gray-400 font-semibold text-xs place-self-start">
-              Admin
+              {user.position}
             </span>
           </div>
 

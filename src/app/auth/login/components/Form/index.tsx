@@ -9,9 +9,10 @@ import { LockIcon, PersonIcon } from '@/app/assets/icons'
 import { loginFormSchema } from '@/app/validations/schemas/login/login-form-schema'
 import { ValidationResult } from '@/@types/yup'
 import { ObjectSchema } from 'yup'
-import { redirect } from 'next/navigation'
 import { Spinner } from '@material-tailwind/react'
 import { CiCircleAlert } from 'react-icons/ci'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '@/app/contexts/auth-context'
 
 
 export const Form = (): React.JSX.Element => {
@@ -21,6 +22,8 @@ export const Form = (): React.JSX.Element => {
     password: '',
     email: '',
   })
+  const router = useRouter()
+  const { setUser } = useAuth()
   const [alert, setAlert] = useState('')
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -34,8 +37,13 @@ export const Form = (): React.JSX.Element => {
       method: 'POST',
       body: JSON.stringify(loginForm),
     })
-    const loginResult = await res.json()
-    console.log(loginResult)
+    const { data, status } = await res.json()
+    if (status !== 200) {
+      // Set Error
+      return
+    }
+    setUser(data)
+    router.push('/employees')
   }
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {

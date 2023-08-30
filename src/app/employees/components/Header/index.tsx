@@ -3,7 +3,7 @@
 
 import React from 'react'
 import { AddEmployeeButton, FilterButton } from '../Buttons/buttons'
-import { signIn } from 'next-auth/react'
+import { useAuth } from '@/app/contexts/auth-context'
 
 type Props = {
   employeesSelected: number
@@ -13,7 +13,6 @@ export const Header = ({ employeesSelected }: Props): React.JSX.Element => {
   return (
     <header className="flex md:justify-between items-center flex-col gap-6 md:flex-row w-full p-8">
       {/* Filter and Total of employees */}
-      <button onClick={() => signIn()}>Teste</button>
       <div className="flex gap-20 p-2 items-center w-full md:w-1/2 justify-between">
         <span className="text-sm md:text-2xl text-blue-800 whitespace-nowrap md:whitespace-normal md:mt-0 mt-4">
           42 Employees
