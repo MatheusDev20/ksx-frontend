@@ -1,5 +1,5 @@
 import React from 'react'
-import { BaseLayout } from '../components/Layout'
+import BaseLayout from '../components/Layout'
 
 export default function EmployeesLayout({
   children,

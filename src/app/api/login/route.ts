@@ -11,20 +11,24 @@ export async function POST(request: NextRequest) {
       },
       body: JSON.stringify(loginData),
     })
-
     const { body: { user, access_token } } = await res.json()
 
     if (res.status !== 200) {
       return NextResponse.json({ status: res.status, user: null })
     }
-
-    return new Response(JSON.stringify({ data: user, status: res.status }), {
+    const response = {
+      status: 200,
+      data: user,
+    }
+    console.log('response')
+    return new Response(JSON.stringify(response), {
       status: 200,
       headers: { 'Set-Cookie': `accessToken=${access_token}; HttpOnly; Max-Age=3600; Path=/;` },
     })
 
 
   } catch (error) {
+    console.log(error)
     return NextResponse.json({ status: 500, data: 'Internal Server Error' })
   }
 }
