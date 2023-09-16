@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextRequest, NextResponse } from 'next/server'
 // Browser => Api Server side do Next => Nest JS => Nest seta o cookie dessa requisição => eu seto o cookie do Browser.
 export async function POST(request: NextRequest) {
   const loginData = await request.json()
-
+  console.log(process.env.API_URL)
   try {
     const res = await fetch(`${process.env.API_URL}/auth/login`, {
       method: 'POST',
@@ -11,7 +11,9 @@ export async function POST(request: NextRequest) {
       },
       body: JSON.stringify(loginData),
     })
-    const { body: { user, access_token } } = await res.json()
+    const {
+      body: { user, accessToken },
+    } = await res.json()
 
     if (res.status !== 200) {
       return NextResponse.json({ status: res.status, user: null })
@@ -20,13 +22,13 @@ export async function POST(request: NextRequest) {
       status: 200,
       data: user,
     }
-    console.log('response')
+
     return new Response(JSON.stringify(response), {
       status: 200,
-      headers: { 'Set-Cookie': `accessToken=${access_token}; HttpOnly; Max-Age=3600; Path=/;` },
+      headers: {
+        'Set-Cookie': `accessToken=${accessToken}; Max-Age=3600; Path=/;`,
+      },
     })
-
-
   } catch (error) {
     console.log(error)
     return NextResponse.json({ status: 500, data: 'Internal Server Error' })

@@ -29,11 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={roboto_mono.variable}>
       <link rel="icon" href="./app/assets/imgs/logo1.png" sizes="any" />
-      <body>
-        <Provider>
-          {children}
-        </Provider>
-      </body>
+      <Provider>
+        <body>{children}</body>
+      </Provider>
     </html>
   )
 }

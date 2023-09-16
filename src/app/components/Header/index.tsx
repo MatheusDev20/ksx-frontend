@@ -40,9 +40,7 @@ export const Header = ({ user }: any): React.JSX.Element => {
           />
           {/* Profile Avatar and Role */}
           <div className="flex-col justify-center hidden md:flex">
-            <span className="text-sm text-blue-800 font-bold">
-              {user.name}
-            </span>
+            <span className="text-sm text-blue-800 font-bold">{user.name}</span>
             <span className="text-gray-400 font-semibold text-xs place-self-start">
               {user.position}
             </span>

@@ -1,23 +1,30 @@
 'use client'
 
-import React, { ReactNode, createContext, useContext, useEffect, useState } from "react";
+import React, { ReactNode, createContext, useContext, useState } from 'react'
 
 export type AuthenticationContextProps = {
-  user: any;
-  setUser: React.Dispatch<any>;
-  isAuthenticated: boolean;
+  user: any
+  setUser: React.Dispatch<any>
+  isAuthenticated: boolean
 }
 
-export const AuthenticationContext = createContext<AuthenticationContextProps | null>(null);
+export const AuthenticationContext =
+  createContext<AuthenticationContextProps | null>(null)
 
-
-const AuthProvider = ({ children }: { children: ReactNode }): React.JSX.Element => {
+const AuthProvider = ({
+  children,
+}: {
+  children: ReactNode
+}): React.JSX.Element => {
   const [user, setUser] = useState<any | null>(null)
 
   return (
-    <AuthenticationContext.Provider value={{ user, setUser, isAuthenticated: false }}>
+    <AuthenticationContext.Provider
+      value={{ user, setUser, isAuthenticated: false }}
+    >
       {children}
-    </AuthenticationContext.Provider >)
+    </AuthenticationContext.Provider>
+  )
 }
 
 const useAuth = (): AuthenticationContextProps => {

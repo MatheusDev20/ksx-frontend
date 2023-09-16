@@ -6,7 +6,5 @@ export default function LoginLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <main className="w-full h-screen">{children}</main>
-  )
+  return <main className="w-full h-screen">{children}</main>
 }

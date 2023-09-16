@@ -13,7 +13,7 @@ import { Spinner } from '@material-tailwind/react'
 import { CiCircleAlert } from 'react-icons/ci'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/app/contexts/auth-context'
-
+import { login } from '@/app/api/functions/auth'
 
 export const Form = (): React.JSX.Element => {
   const [errors, setErrors] = useState<{ [key: string]: string[] } | null>(null)
@@ -29,21 +29,13 @@ export const Form = (): React.JSX.Element => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const { veredict, errors } = await validateForm(loginForm, loginFormSchema)
+  
     if (!veredict) {
       setErrors(errors)
       return
     }
-    const res = await fetch('http://localhost:3000/api/login', {
-      method: 'POST',
-      body: JSON.stringify(loginForm),
-    })
-    const { data, status } = await res.json()
-    if (status !== 200) {
-      // Set Error
-      return
-    }
-    setUser(data)
-    router.push('/employees')
+    login(loginForm).then((res) => console.log(res))
+
   }
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -76,18 +68,28 @@ export const Form = (): React.JSX.Element => {
             label="Password"
             placeholder="Password..."
           />
-          {alert &&
-            <div className='flex gap-2'>
+          {alert && (
+            <div className="flex gap-2">
               <CiCircleAlert className="text-red-500" />
-              {<span className="text-sm text-red-500 font-semibold">{alert}</span>}
+              {
+                <span className="text-sm text-red-500 font-semibold">
+                  {alert}
+                </span>
+              }
             </div>
-          }
+          )}
           <a className="text-sm mb-10 mt-5 cursor-pointer no-underline font-medium text-blue-800 hover:text-blue-400 dark:text-primary-500">
             Forgot password?
           </a>
-          <SignInButton>{loading ? <Spinner className='self-center' color='blue' /> : 'Login'}</SignInButton>
-        </div >
-      </form >
+          <SignInButton>
+            {loading ? (
+              <Spinner className="self-center" color="blue" />
+            ) : (
+              'Login'
+            )}
+          </SignInButton>
+        </div>
+      </form>
     </>
   )
 }

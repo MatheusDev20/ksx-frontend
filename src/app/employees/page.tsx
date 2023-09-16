@@ -1,19 +1,14 @@
+'use client'
 
-
-import { cookies } from 'next/headers'
-// import { useAuth } from '../contexts/auth-context'
+import { getEmployeeList, getHomePageData } from '../api/functions'
 import { CardList } from './components/CardList'
 import { Header } from './components/Header'
-import { redirect } from 'next/navigation'
+import { getCookie } from 'cookies-next'
 
-export default async function Page() {
-  // const { user } = useAuth()
-  const cookieStore = cookies()
-  const token = cookieStore.get('accessToken')
-  console.log('Employees Page', token)
-  if (!token) {
-    redirect('/auth/login')
-  }
+export default function Page() {
+  const token = getCookie('accessToken')
+  const employeeList = getEmployeeList(token ?? '')
+
   return (
     <div className="flex flex-col md:flex-col sm:h-full bg-gray-50 max-w-full">
       <Header employeesSelected={3} />
